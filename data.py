@@ -1,6 +1,3 @@
-# COMMIT THIS FIRST PLS
-# Table no 3 in statistics
-
 import numpy as np
 
 natural_mortality = np.array(
@@ -80,4 +77,99 @@ and age (0-12), and data type (length, mortality rate).
 Age-specific instantaneous natural mortality rates for Spotted
 Seatrout by Florida coast and sex based on the Lorenzen method
 (2005).
+"""
+
+fishing_mortality = np.array(
+    [
+        [
+            [0.21, 0.03],
+            [0.19, 0.03],
+            [0.26, 0.03],
+            [0.35, 0.04],
+            [0.21, 0.03],
+            [0.24, 0.03],
+            [0.16, 0.02],
+            [0.16, 0.02],
+            [0.17, 0.02],
+            [0.18, 0.02],
+            [0.13, 0.01],
+            [0.18, 0.02],
+            [0.22, 0.02],
+            [0.29, 0.02],
+            [0.24, 0.02],
+            [0.16, 0.01],
+            [0.26, 0.02],
+            [0.22, 0.02],
+            [0.27, 0.02],
+            [0.30, 0.02],
+            [0.29, 0.03],
+            [0.25, 0.02],
+            [0.23, 0.02],
+            [0.21, 0.02],
+            [0.19, 0.01],
+            [0.29, 0.02],
+            [0.30, 0.02],
+            [0.24, 0.02],
+            [0.22, 0.02],
+            [0.25, 0.02],
+            [0.28, 0.02],
+            [0.27, 0.02],
+            [0.24, 0.02],
+            [0.22, 0.02],
+            [0.23, 0.02],
+            [0.26, 0.03],
+            [0.28, 0.03],
+            [0.28, 0.03]
+        ],
+        [
+            [0.44, 0.13],
+            [0.36, 0.10],
+            [0.36, 0.10],
+            [0.25, 0.05],
+            [0.15, 0.03],
+            [0.18, 0.03],
+            [0.26, 0.04],
+            [0.20, 0.03],
+            [0.12, 0.01],
+            [0.19, 0.03],
+            [0.13, 0.02],
+            [0.17, 0.03],
+            [0.15, 0.02],
+            [0.18, 0.02],
+            [0.22, 0.03],
+            [0.15, 0.02],
+            [0.22, 0.02],
+            [0.17, 0.02],
+            [0.16, 0.02],
+            [0.20, 0.02],
+            [0.26, 0.02],
+            [0.27, 0.03],
+            [0.27, 0.04],
+            [0.16, 0.02],
+            [0.26, 0.02],
+            [0.19, 0.02],
+            [0.28, 0.03],
+            [0.23, 0.03],
+            [0.29, 0.02],
+            [0.20, 0.03],
+            [0.20, 0.03],
+            [0.25, 0.03],
+            [0.23, 0.03],
+            [0.18, 0.02],
+            [0.28, 0.04],
+            [0.27, 0.02],
+            [0.23, 0.04],
+            [0.14, 0.02]
+        ]
+    ]
+)
+"""
+Table 15 in the stock assessment.
+
+Organized by coast (Gulf, Atlantic), year (1986-2023), and data type 
+(mortality rate, standard deviation).
+
+Annual estimates and standard deviation of instantaneous fishing 
+mortality rates on ages 2-4 Spotted Seatrout combined across all 
+fleets for the Florida coast base models.
 """
