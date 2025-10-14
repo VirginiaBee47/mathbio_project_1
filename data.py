@@ -1,73 +1,5 @@
 import numpy as np
 
-natural_mortality = np.array(
-    [
-        [
-            [
-                [18.6, 0.924],
-                [27.2, 0.724],
-                [39.2, 0.561],
-                [46.5, 0.494],
-                [50.9, 0.461],
-                [53.6, 0.443],
-                [55.3, 0.433],
-                [56.3, 0.427],
-                [56.9, 0.423],
-                [57.3, 0.421],
-                [57.5, 0.419],
-                [57.6, 0.419],
-                [57.7, 0.418]
-            ],
-            [
-                [17.3, 0.752],
-                [25.7, 0.601],
-                [34.9, 0.497],
-                [38.9, 0.463],
-                [40.6, 0.450],
-                [41.4, 0.444],
-                [41.7, 0.442],
-                [41.9, 0.441],
-                [41.9, 0.441],
-                [42.0, 0.440],
-                [42.0, 0.440],
-                [42.0, 0.440],
-                [42.0, 0.440]
-            ]
-        ],
-        [
-            [
-                [17.2, 1.065],
-                [26.6, 0.806],
-                [40.4, 0.598],
-                [49.6, 0.512],
-                [55.6, 0.468],
-                [59.6, 0.443],
-                [62.2, 0.428],
-                [63.9, 0.419],
-                [65.1, 0.413],
-                [65.8, 0.409],
-                [66.3, 0.406],
-                [66.7, 0.404],
-                [66.9, 0.403]
-            ],
-            [
-                [16.6, 0.871],
-                [24.5, 0.684],
-                [34.9, 0.539],
-                [40.6, 0.482],
-                [43.9, 0.456],
-                [45.6, 0.443],
-                [46.6, 0.436],
-                [47.2, 0.432],
-                [47.5, 0.430],
-                [47.7, 0.428],
-                [47.8, 0.428],
-                [47.8, 0.427],
-                [47.9, 0.427]
-            ]
-        ]
-    ]
-)
 """
 Table 3 in the stock assessment.
 
@@ -77,8 +9,54 @@ and age (0-12), and data type (length, mortality rate).
 Age-specific instantaneous natural mortality rates for Spotted
 Seatrout by Florida coast and sex based on the Lorenzen method
 (2005).
+Florida Gulf Females
+Florida Gulf Males
 """
+NATURAL_MORTALITY = np.array(
+    [    
+        [
+            [18.6, 0.924],
+            [27.2, 0.724],
+            [39.2, 0.561],
+            [46.5, 0.494],
+            [50.9, 0.461],
+            [53.6, 0.443],
+            [55.3, 0.433],
+            [56.3, 0.427],
+            [56.9, 0.423],
+            [57.3, 0.421],
+            [57.5, 0.419],
+            [57.6, 0.419],
+            [57.7, 0.418]
+        ],
+        [
+            [17.3, 0.752],
+            [25.7, 0.601],
+            [34.9, 0.497],
+            [38.9, 0.463],
+            [40.6, 0.450],
+            [41.4, 0.444],
+            [41.7, 0.442],
+            [41.9, 0.441],
+            [41.9, 0.441],
+            [42.0, 0.440],
+            [42.0, 0.440],
+            [42.0, 0.440],
+            [42.0, 0.440]
+        ]
+    ]
+)
 
+"""
+Table 15 in the stock assessment.
+
+Organized by coast (Gulf, Atlantic), year (1986-2023), and data type 
+(mortality rate, standard deviation).
+
+Annual estimates and standard deviation of instantaneous fishing 
+mortality rates on ages 2-4 Spotted Seatrout combined across all 
+fleets for the Florida coast base models.
+"""
 fishing_mortality = np.array(
     [
         [
@@ -163,13 +141,3 @@ fishing_mortality = np.array(
         ]
     ]
 )
-"""
-Table 15 in the stock assessment.
-
-Organized by coast (Gulf, Atlantic), year (1986-2023), and data type 
-(mortality rate, standard deviation).
-
-Annual estimates and standard deviation of instantaneous fishing 
-mortality rates on ages 2-4 Spotted Seatrout combined across all 
-fleets for the Florida coast base models.
-"""
