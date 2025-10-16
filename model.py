@@ -13,9 +13,20 @@
 
 import numpy as np
 from scipy.integrate import solve_ivp
+from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
+import pandas as pd
 
 from data import NATURAL_MORTALITY, FISHING_MORTALITY
+
+# This is to plot the data and fit the model to it
+df=pd.read_csv("abundance_data.csv")
+y_data=df[["Juveniles", "Females", "Males"]].iloc[16:].values
+y_data_flat=y_data.flatten()
+y0=y_data[0]
+
+plt.plot(np.arange(1,24),y_data[["Juveniles"]])
+plt.show()
 
 # ------------------------- Model definition -------------------------
 # Definitions:
@@ -38,17 +49,17 @@ def bh_recruitment(F, alpha, beta):
 def odes(t, y, params):
     """ODE system: y = [J, F, M]"""
     J, F, M = y
-    # unpack params
-    m = params['m']           # maturation rate (1/years)
-    mu_J = params['mu_J']     # juvenile natural mortality
-    mu_F = params['mu_F']     # female natural mortality
-    mu_M = params['mu_M']     # male natural mortality
-    p = params['p']           # proportion of recruits that become female
-    alpha = params['alpha']   # BH alpha
-    beta = params['beta']     # BH beta
-    F_fish = params['F_fish'] # instantaneous fishing mortality applied to adults
-    s_F = params['s_F']       # female selectivity (0-1)
-    s_M = params['s_M']       # male selectivity (0-1)
+    
+    m       = params['m']       # maturation rate (1/years)
+    mu_J    = params['mu_J']    # juvenile natural mortality
+    mu_F    = params['mu_F']    # female natural mortality
+    mu_M    = params['mu_M']    # male natural mortality
+    p       = params['p']       # proportion of recruits that become female
+    alpha   = params['alpha']   # BH alpha
+    beta    = params['beta']    # BH beta
+    F_fish  = params['F_fish']  # instantaneous fishing mortality applied to adults
+    s_F     = params['s_F']     # female selectivity (0-1)
+    s_M     = params['s_M']     # male selectivity (0-1)
     
     # recruitment depends only on females (female-driven BH)
     R = bh_recruitment(F, alpha, beta)
@@ -219,3 +230,19 @@ if __name__ == "__main__":
 
     print('Baseline final-year summary:', summary_at_end({'t': time, 'J': J, 'F': F, 'M': M, 'catch': catch_inst}))
     print('Male-targeted final-year summary:', summary_at_end(res_mt))
+
+    def solve_and_flatten(t, *params):
+        t_eval = np.linspace(t[0], t[1], 24)
+        sol = solve_ivp(odes,
+                    t_span=t_span, y0=y0, t_eval=t_eval, method='RK45', rtol=1e-6, args=params)
+        print(f"{params}\n")
+        print("meep",sol.y.T.flatten().shape)
+        return sol.y.T.flatten()
+
+    print(solve_and_flatten(t_span, *params).shape)
+
+    print(t_eval.shape)
+    print(y_data.shape)
+    print(y_data_flat.shape)
+
+    popt, pcov = curve_fit(solve_and_flatten, t_eval, y_data_flat, p0=params)
